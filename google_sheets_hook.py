@@ -2,12 +2,11 @@ import os
 from pprint import pprint
 from googleapiclient import discovery
 
-from oauth2client.service_account import ServiceAccountCredentials
-
 from airflow.hooks.base_hook import BaseHook
 from airflow.plugins_manager import AirflowPlugin
 
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/home/airflow/airflow/credentials.json'
+
 
 class GoogleSheetsHook(BaseHook):
     def __init__(self, google_conn_id='google_default'):
@@ -25,7 +24,7 @@ class GoogleSheetsHook(BaseHook):
 
         return discovery.build(api_name, api_version, credentials=credentials, cache_discovery=False)
 
-
+    
 class GoogleSheetsHookPlugin(AirflowPlugin):
     name = "google_sheets_hook"
     hooks = [GoogleSheetsHook]
