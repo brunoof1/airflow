@@ -4,6 +4,7 @@ from googleapiclient import discovery
 from airflow.hooks.base_hook import BaseHook
 from airflow.plugins_manager import AirflowPlugin
 
+#TODO Move OS env to Airflow env
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/home/airflow/airflow/credentials.json'
 
 
