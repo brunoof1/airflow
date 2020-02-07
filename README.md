@@ -1,38 +1,38 @@
                                         Installation steps on UBUNTU
 
-										Airflow
+					Airflow
 
 sudo AIRFLOW_GPL_UNIDECODE=yes pip install "apache-airflow[celery, crypto, postgres, hive, rabbitmq, redis]"
 
-										Postgres
+					Postgres
 
 sudo apt-get install postgresql postgresql-contrib
 sudo /etc/init.d/postgresql start
 
-										SO User
+					SO User
 
 sudo adduser airflow
 sudo usermod -aG sudo airflow
 su - airflow
 sudo -u postgres psql
 
-										User profile
+					User profile
 
 export AIRFLOW_HOME=~/airflow
 
-										Postgres Objects
+					Postgres Objects
 
 CREATE USER airflow PASSWORD 'airflow';
 CREATE DATABASE airflow;
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO airflow;
 \du
 
-										Postgres Testing
+					Postgres Testing
 
 psql -d airflow
 \conninfo
 
-										Change airflow db to postgres
+					Change airflow db to postgres
 
 vim airflow/airflow.cfg
 
@@ -40,20 +40,20 @@ executor = LocalExecutor
 sql_alchemy_conn = postgresql+psycopg2://airflow:airflow@localhost:5432/airflow
 airflow initdb
 
-										Starting Airflow DB and process
+					Starting Airflow DB and process
 
 airflow initdb
 airflow upgradedb
 airflow webserver -p 8080 &
 airflow scheduler &
 
-										Install AWS requirements
+					Install AWS requirements
 
 sudo apt-get install awscli
 sudo pip install boto3
 pip install awscli 
 
-										Configure AWS credentials
+					Configure AWS credentials
 
 aws configure
 
