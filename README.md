@@ -1,4 +1,4 @@
-                                        Installation steps on UBUNTU
+                                  Installation steps on UBUNTU
 
 					Airflow
 
